@@ -84,7 +84,7 @@ class Lukio_Email_Confirmation extends \ElementorPro\Modules\Forms\Actions\Email
             'lukio_email_confirmation_textarea',
             [
                 'label' => esc_html__('Email body', 'lukio-elementor-form-confirmation-with-pdf'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'description' => esc_html__('Text to be in the body of the confirmation email the user receive.', 'lukio-elementor-form-confirmation-with-pdf'),
             ]
         );
