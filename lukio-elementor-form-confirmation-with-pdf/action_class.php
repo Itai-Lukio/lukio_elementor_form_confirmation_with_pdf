@@ -90,6 +90,15 @@ class Lukio_Email_Confirmation extends \ElementorPro\Modules\Forms\Actions\Email
         );
 
         $widget->add_control(
+            'lukio_email_confirmation_direction',
+            [
+                'label' => esc_html__('Email RTL direction', 'lukio-elementor-form-confirmation-with-pdf'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'description' => esc_html__('True to send email with RTL text', 'lukio-elementor-form-confirmation-with-pdf'),
+            ]
+        );
+
+        $widget->add_control(
             'lukio_email_confirmation_file',
             [
                 'label' => esc_html__('Attachment file', 'lukio-elementor-form-confirmation-with-pdf'),
@@ -121,7 +130,7 @@ class Lukio_Email_Confirmation extends \ElementorPro\Modules\Forms\Actions\Email
         wp_mail(
             $user_email,
             $settings['lukio_email_confirmation_email_subject'],
-            wpautop($settings['lukio_email_confirmation_textarea']),
+            '<div style="direction:' . ($settings['lukio_email_confirmation_direction'] == 'yes' ? 'rtl' : 'ltr') . ' ;">' . wpautop($settings['lukio_email_confirmation_textarea']) . '</div>',
             array('Content-Type: text/html; charset=UTF-8'),
             $attachment
         );
@@ -143,6 +152,7 @@ class Lukio_Email_Confirmation extends \ElementorPro\Modules\Forms\Actions\Email
             $element['lukio_email_confirmation_file'],
             $element['lukio_email_confirmation_user_email_field'],
             $element['lukio_email_confirmation_email_subject'],
+            $element['lukio_email_confirmation_direction'],
         );
 
         return $element;
