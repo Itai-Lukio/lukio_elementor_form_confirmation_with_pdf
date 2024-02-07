@@ -121,7 +121,7 @@ class Lukio_Email_Confirmation extends \ElementorPro\Modules\Forms\Actions\Email
         wp_mail(
             $user_email,
             $settings['lukio_email_confirmation_email_subject'],
-            $settings['lukio_email_confirmation_textarea'],
+            wpautop($settings['lukio_email_confirmation_textarea']),
             array('Content-Type: text/html; charset=UTF-8'),
             $attachment
         );
