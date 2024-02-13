@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
  */
 function add_lukio_form_confirmation_action($form_actions_registrar)
 {
-    include_once(__DIR__ .  '/action_class.php');
+    include_once(__DIR__ .  '/form-confirmation.class.php');
     $form_actions_registrar->register(new Lukio_Email_Confirmation());
 }
 add_action('elementor_pro/forms/actions/register', 'add_lukio_form_confirmation_action');
